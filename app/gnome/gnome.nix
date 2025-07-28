@@ -27,6 +27,8 @@
         "dash-to-dock@micxgx.gmail.com"
         "caffeine@patapon.info"
         "drive-menu@gnome-shell-extensions.gcampax.github.com"
+        "eye-on-cursor@djinnalexio.github.io"
+        "blur-my-shell@aunetx"
       ];
 
       disabled-extensions = [ ];

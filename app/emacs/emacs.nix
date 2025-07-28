@@ -10,15 +10,6 @@ in
   };
 
   home.packages = with pkgs; [
-    nixd
-    nixpkgs-fmt
-    clang-tools
-    rust-analyzer
-    rustc
-    cargo
-    rustfmt
-    gdb
-
     # Emacs packages (via emacs-overlay)
     emacsPkgs.use-package
     emacsPkgs.gruvbox-theme

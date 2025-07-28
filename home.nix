@@ -13,27 +13,21 @@
   home.packages = with pkgs; [
     # editors
     vscode
-
     # browsers
     brave
-
     # mail
     evolution
-
     # proton
     protonvpn-gui
     protonmail-bridge
-
     # multimedia
     vlc
     rhythmbox
-
     # archives
     zip
     xz
     unzip
     p7zip
-
     # utils
     ptyxis
     fastfetch
@@ -43,7 +37,6 @@
     btop # replacement of htop/nmon
     iotop # io monitoring
     iftop # network monitoring
-
     # misc
     file
     which
@@ -53,23 +46,20 @@
     gawk
     zstd
     gnupg
-
     # nix related
+    nixd
     nix-output-monitor
     nixfmt-rfc-style
-
     # system call monitoring
     strace # system call monitoring
     ltrace # library call monitoring
     lsof # list open files
-
     # system tools
     sysstat
     lm_sensors # for `sensors` command
     ethtool
     pciutils # lspci
     usbutils # lsusb
-
     # virtualisation
     distrobox
   ];
