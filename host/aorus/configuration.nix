@@ -82,6 +82,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+  hardware.alsa.enablePersistence = true;
 
   # Touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
@@ -127,6 +128,7 @@
     neovim
     wget
     killall
+    alsa-utils
   ];
 
   # Services to enable:
@@ -135,10 +137,11 @@
   services.openssh.enable = true;
 
   # Enable Emacs daemon.
-  services.emacs = {
-    enable = true;
-    package = pkgs.emacs-pgtk;
-  };
+  #nixpkgs.overlays = [ emacs-overlay.overlay ];
+  #services.emacs = {
+  #  enable = true;
+  #  package = pkgs.emacs-unstable-pgtk;
+  #};
 
   # Cleanup
   nix.gc = {
@@ -152,7 +155,7 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  # networking.firewall.enable = fals
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

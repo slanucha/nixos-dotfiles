@@ -12,7 +12,7 @@
   # Packages
   home.packages = with pkgs; [
     # editors
-    vscode
+    vscode-with-extensions
     # browsers
     brave
     # mail
@@ -50,6 +50,7 @@
     nixd
     nix-output-monitor
     nixfmt-rfc-style
+    nix-direnv
     # system call monitoring
     strace # system call monitoring
     ltrace # library call monitoring

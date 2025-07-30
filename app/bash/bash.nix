@@ -27,4 +27,11 @@
     enable = true;
     settings = builtins.fromTOML (builtins.readFile ./starship-gruvbox-rainbow.toml);
   };
+
+  # Easy shell environments
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    nix-direnv.enable = true;
+  };
 }
