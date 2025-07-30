@@ -22,47 +22,36 @@
     let
       commonImports = [
         ./home.nix
-        ./app/gnome/gnome.nix
-        ./app/bash/bash.nix
-        ./app/emacs/emacs.nix
+        ./modules/apps/gnome/gnome.nix
+        ./modules/apps/bash/bash.nix
+        ./modules/apps/emacs/emacs.nix
+      ];
+
+      homeManagerConfig = {
+        nixpkgs.overlays = [ emacs-overlay.overlay ];
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users.slan = {
+          imports = commonImports ++ [ ];
+        };
+      };
+      
+      commonModules = [
+        ./modules/gnome.nix
+        nix-flatpak.nixosModules.nix-flatpak
+        home-manager.nixosModules.home-manager
+        homeManagerConfig
       ];
     in
     {
       nixosConfigurations = {
-
         aorus = nixpkgs.lib.nixosSystem {
-          modules = [
-            ./host/aorus/configuration.nix
-            ./desktop/gnome.nix
-            nix-flatpak.nixosModules.nix-flatpak
-            home-manager.nixosModules.home-manager
-            {
-              nixpkgs.overlays = [ emacs-overlay.overlay ];
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.slan = {
-                imports = commonImports ++ [ ];
-              };
-            }
-          ];
+          modules = commonModules ++ [ ./hosts/aorus/configuration.nix ];
         };
 
         thinkpad = nixpkgs.lib.nixosSystem {
-          modules = [
-            ./host/thinkpad/configuration.nix
-            ./desktop/gnome.nix
-            nix-flatpak.nixosModules.nix-flatpak
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.slan = {
-                imports = commonImports ++ [ ];
-              };
-            }
-          ];
+          modules = commonModules ++ [ ./hosts/thinkpad/configuration.nix ];
         };
-
       };
     };
 }
