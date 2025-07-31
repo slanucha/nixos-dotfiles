@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  config,
   ...
 }:
 
@@ -19,7 +20,7 @@
     evolution
     # proton
     protonvpn-gui
-    protonmail-bridge
+    protonmail-bridge-gui
     pass
     # multimedia
     vlc
@@ -71,39 +72,5 @@
     enable = true;
     userName = "Szymon Lanucha";
     userEmail = "slann@protonmail.com";
-  };
-
-  # GPG
-  programs.gpg = {
-    enable = true;
-    # Use pinentry-tty or pinentry-curses for TTY environments
-    # Or pinentry-gtk2 for GUI
-    settings = {
-      use-agent = true;
-    };
-  };
-
-  services.gpg-agent = {
-    enable = true;
-    pinentryPackage = pkgs.pinentry-tty;  # or "curses" or "gtk2" if using a graphical session
-    defaultCacheTtl = 1800;
-    enableSshSupport = true; # optional
-  };
-
-  programs.password-store.enable = true;
-
-  # Protonmail service
-  systemd.user.services.protonmail-bridge = {
-    Unit = {
-      Description = "ProtonMail Bridge";
-      After = [ "network-online.target" ];
-    };
-    Service = {
-      ExecStart = "${pkgs.protonmail-bridge}/bin/protonmail-bridge --noninteractive";
-      Restart = "on-failure";
-    };
-    Install = {
-      WantedBy = [ "default.target" ];
-    };
   };
 }

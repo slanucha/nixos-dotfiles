@@ -8,7 +8,13 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (global-display-line-numbers-mode)
-    
+
+(use-package drag-stuff
+  :ensure t
+  :config
+  (drag-stuff-global-mode 1)
+  (drag-stuff-define-keys))
+
 ;; Theme
 (use-package gruvbox-theme
   :config

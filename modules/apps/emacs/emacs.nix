@@ -9,6 +9,7 @@ let
     extraEmacsPackages = epkgs: with epkgs; [
       use-package
       gruvbox-theme
+      drag-stuff
       magit
       flycheck
       rustic
