@@ -71,8 +71,11 @@
   console.keyMap = "pl2";
 
   # CUPS
-  services.printing.enable = true;
-
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.hplip ];
+  };
+  
   # Sound with pipewire
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
