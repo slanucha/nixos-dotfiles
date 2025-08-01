@@ -38,6 +38,7 @@
       
       commonModules = [
         ./modules/gnome.nix
+        ./modules/flatpak.nix
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
         homeManagerConfig

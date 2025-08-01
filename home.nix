@@ -20,7 +20,6 @@
     evolution
     # proton
     protonvpn-gui
-    protonmail-bridge-gui
     pass
     # multimedia
     vlc
