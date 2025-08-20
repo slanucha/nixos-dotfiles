@@ -14,6 +14,14 @@
   home.packages = with pkgs; [
     # editors
     vscode-with-extensions
+    # libreoffice
+    libreoffice
+    hunspell
+    hunspellDicts.pl_PL
+    vista-fonts
+    # graphics
+    gimp3-with-plugins
+    inkscape-with-extensions
     # browsers
     brave
     # mail
