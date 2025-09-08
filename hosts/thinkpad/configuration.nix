@@ -100,6 +100,8 @@
     killall
   ];
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  
   # Services to enable:
 
   # OpenSSH daemon.

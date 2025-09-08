@@ -13,7 +13,6 @@
   # Packages
   home.packages = with pkgs; [
     # editors
-    vscode-with-extensions
     # libreoffice
     libreoffice
     hunspell
@@ -22,6 +21,7 @@
     # graphics
     gimp3-with-plugins
     inkscape-with-extensions
+    rawtherapee
     # browsers
     brave
     # mail
