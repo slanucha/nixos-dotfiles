@@ -20,6 +20,7 @@ let
       company
       tree-sitter
       treesit-grammars.with-all-grammars
+      org
     ];
   };
 in
