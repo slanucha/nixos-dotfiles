@@ -90,10 +90,14 @@
   # Touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
+  # ZSH
+  programs.zsh.enable = true;
+  
   # User account
   users.users.slan = {
     isNormalUser = true;
     description = "Szymon Łanucha";
+    shell = pkgs.zsh;
     extraGroups = [
       "networkmanager"
       "wheel"

@@ -23,7 +23,8 @@
       commonImports = [
         ./home.nix
         ./modules/apps/gnome/gnome.nix
-        ./modules/apps/bash/bash.nix
+        #./modules/apps/bash/bash.nix
+        ./modules/apps/zsh/zsh.nix
         ./modules/apps/emacs/emacs.nix
         ./modules/apps/vscode/vscode.nix
       ];
