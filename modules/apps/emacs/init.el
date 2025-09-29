@@ -28,6 +28,9 @@
 (use-package flycheck
   :hook (after-init . global-flycheck-mode))
 
+;; Backups
+(setq backup-directory-alist '(("." . "~/.emacs.d/backup")))
+
 ;; lsp-mode for Nix, C/C++, Rust
 (use-package lsp-mode
   :commands lsp

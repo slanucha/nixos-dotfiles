@@ -72,6 +72,8 @@
     usbutils # lsusb
     # virtualisation
     distrobox
+    # remote
+    realvnc-vnc-viewer
   ];
 
   # git configuration

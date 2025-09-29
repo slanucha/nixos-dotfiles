@@ -10,8 +10,9 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    initExtra = ''
+    initContent = ''
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
+      export NIXPKGS_ALLOW_UNFREE=1
     '';
 
     shellAliases = {

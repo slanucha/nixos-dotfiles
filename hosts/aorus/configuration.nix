@@ -103,6 +103,7 @@
       "wheel"
       "podman"
       "vboxusers"
+      "dialout"
     ];
   };
 
