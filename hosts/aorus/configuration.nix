@@ -13,7 +13,16 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.systemd-boot.edk2-uefi-shell.enable = true;
 
+  boot.loader.systemd-boot.windows = {
+    "win11" = {
+      title = "Windows Boot Manager";
+      efiDeviceHandle = "HD2b";
+      sortKey = "z_windows";
+    };
+  };
+  
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -44,7 +53,7 @@
       options = [ "defaults" ];
     };
   };
-
+  
   # Networking
   networking.hostName = "aorus";
   networking.networkmanager.enable = true;
