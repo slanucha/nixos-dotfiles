@@ -61,7 +61,8 @@
     };
 
     "org/gnome/desktop/interface" = {
-      scaling-factor = 1.25;
+      scaling-factor = 1;
+      text-scaling-factor = 1.25;
     };
   };
 }
