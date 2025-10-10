@@ -75,6 +75,15 @@
     distrobox
     # remote
     realvnc-vnc-viewer
+    # Nix Search TV
+    (pkgs.writeShellApplication {
+      name = "ns";
+      runtimeInputs = with pkgs; [
+        fzf
+        nix-search-tv
+      ];
+      text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
+    })
   ];
 
   # git configuration
