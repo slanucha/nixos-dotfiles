@@ -13,17 +13,18 @@
   # Packages
   home.packages = with pkgs; [
     # editors
-    # libreoffice
     libreoffice
     hunspell
     hunspellDicts.pl_PL
     vista-fonts
     # graphics
+    krita
     gimp3-with-plugins
     inkscape-with-extensions
     rawtherapee
     # browsers
     brave
+    vivaldi
     # mail
     evolution
     # proton
@@ -91,5 +92,8 @@
     enable = true;
     userName = "Szymon Lanucha";
     userEmail = "slann@protonmail.com";
+    extraConfig = {
+      core.editor = "nvim";
+    };
   };
 }

@@ -96,6 +96,9 @@
   };
   hardware.alsa.enablePersistence = true;
 
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  
   # Touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
