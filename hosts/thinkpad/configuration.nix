@@ -85,6 +85,7 @@
     fontconfig.enable = true;
     packages = with pkgs; [
       nerd-fonts._0xproto
+      inter
     ];
   };
 
