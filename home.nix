@@ -32,7 +32,7 @@
     pass
     # multimedia
     vlc
-    rhythmbox
+    fooyin
     # archives
     zip
     xz

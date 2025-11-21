@@ -160,6 +160,7 @@
     wget
     killall
     alsa-utils
+    nh
   ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
