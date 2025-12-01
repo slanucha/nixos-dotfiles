@@ -8,7 +8,7 @@
 {
   home.username = "slan";
   home.homeDirectory = "/home/slan";
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.11";
 
   # Packages
   home.packages = with pkgs; [
@@ -32,7 +32,12 @@
     pass
     # multimedia
     vlc
-    fooyin
+    # fooyin
+    (fooyin.overrideAttrs (old: {
+      patches = (old.patches or []) ++ [
+        ./home/fooyin/qt610-align.patch
+      ];
+    }))
     # archives
     zip
     xz
@@ -48,6 +53,7 @@
     iotop # io monitoring
     iftop # network monitoring
     moserial
+    devenv
     # misc
     file
     which
@@ -57,6 +63,7 @@
     gawk
     zstd
     gnupg
+    unrar
     # nix related
     nixd
     nix-output-monitor
@@ -77,14 +84,14 @@
     # remote
     realvnc-vnc-viewer
     # Nix Search TV
-    (pkgs.writeShellApplication {
-      name = "ns";
-      runtimeInputs = with pkgs; [
-        fzf
-        nix-search-tv
-      ];
-      text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
-    })
+    # (pkgs.writeShellApplication {
+    #   name = "ns";
+    #   runtimeInputs = with pkgs; [
+    #     fzf
+    #     nix-search-tv
+    #   ];
+    #   text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
+    # })
   ];
 
   # git configuration
