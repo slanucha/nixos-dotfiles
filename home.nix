@@ -13,7 +13,7 @@
   # Packages
   home.packages = with pkgs; [
     # editors
-    libreoffice
+    libreoffice-qt
     hunspell
     hunspellDicts.pl_PL
     vista-fonts
@@ -32,12 +32,12 @@
     pass
     # multimedia
     vlc
-    # fooyin
-    (fooyin.overrideAttrs (old: {
-      patches = (old.patches or []) ++ [
-        ./home/fooyin/qt610-align.patch
-      ];
-    }))
+    fooyin
+    # (fooyin.overrideAttrs (old: {
+    #   patches = (old.patches or []) ++ [
+    #     ./home/fooyin/qt610-align.patch
+    #   ];
+    # }))
     # archives
     zip
     xz
