@@ -31,7 +31,9 @@
     protonvpn-gui
     pass
     # multimedia
+    libdvdread
     vlc
+    amarok
     fooyin
     # (fooyin.overrideAttrs (old: {
     #   patches = (old.patches or []) ++ [
