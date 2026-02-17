@@ -31,6 +31,7 @@
     protonvpn-gui
     pass
     # multimedia
+    ani-cli
     libdvdread
     vlc
     amarok
@@ -99,9 +100,9 @@
   # git configuration
   programs.git = {
     enable = true;
-    userName = "Szymon Lanucha";
-    userEmail = "slann@protonmail.com";
-    extraConfig = {
+    settings = {
+      user.name = "Szymon Lanucha";
+      user.email = "slann@protonmail.com";
       core.editor = "nvim";
     };
   };
