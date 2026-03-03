@@ -14,7 +14,12 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    # emacs-overlay.url = "github:nix-community/emacs-overlay";
+
+    nix-doom-emacs-unstraightened = {
+      url = "github:marienz/nix-doom-emacs-unstraightened";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -23,14 +28,14 @@
       nix-flatpak,
       home-manager,
       plasma-manager,
-      emacs-overlay,
+      # emacs-overlay,
       ...
     }@inputs:
     let
       commonImports = [
         ./home.nix
         ./home/zsh/zsh.nix
-        ./home/emacs/emacs.nix
+        #./home/emacs/emacs.nix
         ./home/vscode/vscode.nix
         ./home/kde/plasma.nix
         #./home/gnome/gnome.nix
@@ -38,13 +43,13 @@
       ];
 
       homeManagerConfig = {
-        nixpkgs.overlays = [ emacs-overlay.overlay ];
+        #nixpkgs.overlays = [ emacs-overlay.overlay ];
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
         home-manager.backupFileExtension = "backup";
         home-manager.users.slan = {
-          imports = commonImports ++ [ ];
+          imports = commonImports ++ [ inputs.nix-doom-emacs-unstraightened.homeModule ];
         };
       };
       

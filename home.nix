@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  inputs,
   ...
 }:
 
@@ -36,6 +37,7 @@
     vlc
     amarok
     fooyin
+    moc
     # (fooyin.overrideAttrs (old: {
     #   patches = (old.patches or []) ++ [
     #     ./home/fooyin/qt610-align.patch
@@ -84,6 +86,7 @@
     usbutils # lsusb
     # virtualisation
     distrobox
+    man-pages
     # remote
     realvnc-vnc-viewer
     # Nix Search TV
@@ -95,6 +98,8 @@
     #   ];
     #   text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
     # })
+    bear
+    clang-tools
   ];
 
   # git configuration
@@ -106,4 +111,13 @@
       core.editor = "nvim";
     };
   };
+
+  # Doom Emacs
+  programs.doom-emacs = {
+    enable = true;
+    doomDir = ./home/emacs/doom-config;
+    doomLocalDir = "${config.xdg.dataHome}/nix-doom"; # required
+    provideEmacs = true;
+  };
+  services.emacs.enable = true;
 }
