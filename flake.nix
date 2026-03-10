@@ -35,6 +35,7 @@
       commonImports = [
         ./home.nix
         ./home/zsh/zsh.nix
+        ./home/wezterm/wezterm.nix
         #./home/emacs/emacs.nix
         ./home/vscode/vscode.nix
         ./home/kde/plasma.nix

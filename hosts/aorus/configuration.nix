@@ -25,7 +25,8 @@
   
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
+  boot.kernelModules = [ "kvm" "kvm-amd" ];
+  
   boot.initrd.luks.devices = {
     "luks-a979547a-263e-4e7a-a59c-088458d63533" = {
       device = "/dev/disk/by-uuid/a979547a-263e-4e7a-a59c-088458d63533";
@@ -55,9 +56,14 @@
   };
   
   # Networking
-  networking.hostName = "aorus";
-  networking.networkmanager.enable = true;
-
+  networking = {
+    hostName = "aorus";
+    # networkmanager.enable = true;
+    interfaces.br0.useDHCP = true;
+    interfaces.enp8s0.useDHCP = false;
+    bridges.br0.interfaces = [ "enp8s0" ];
+  };
+  
   # Time zone
   time.timeZone = "Europe/Warsaw";
 
@@ -117,6 +123,7 @@
       "vboxusers"
       "dialout"
       "plugdev"
+      "libvirtd"
     ];
   };
 
@@ -134,7 +141,9 @@
       # Required for containers under podman-compose to be able to talk to each other.
       defaultNetwork.settings.dns_enabled = true;
     };
+    libvirtd.enable = true;
   };
+  programs.virt-manager.enable = true;
 
   # Flatpak
   services.flatpak.enable = true;

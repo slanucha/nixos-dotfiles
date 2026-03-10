@@ -74,6 +74,7 @@
     nix-output-monitor
     nixfmt-rfc-style
     nix-direnv
+    nix-index
     # system call monitoring
     strace # system call monitoring
     ltrace # library call monitoring
