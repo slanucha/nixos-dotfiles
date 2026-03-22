@@ -24,8 +24,10 @@
     inkscape-with-extensions
     rawtherapee
     # browsers
-    brave
+    firefox
+    google-chrome
     vivaldi
+    thunderbird
     # mail
     evolution
     # proton
@@ -85,6 +87,8 @@
     ethtool
     pciutils # lspci
     usbutils # lsusb
+    minicom
+    rpi-imager
     # virtualisation
     distrobox
     man-pages

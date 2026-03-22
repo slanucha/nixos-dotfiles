@@ -12,7 +12,7 @@
       font = wezterm.font("0xProto Nerd Font Mono"),
       font_size = 12.0,
 
-      color_scheme = "Gruvbox Dark",
+      color_scheme = "Gruvbox dark, medium (base16)",
 
       enable_tab_bar = true,
       use_fancy_tab_bar = false,
@@ -26,6 +26,22 @@
         right = 6,
         top = 6,
         bottom = 6,
+      },
+
+      keys = {
+        { key = "-", mods = "CTRL", action = wezterm.action.DisableDefaultAssignment },
+        { key = "_", mods = "CTRL", action = wezterm.action.DisableDefaultAssignment },
+        { key = "=", mods = "CTRL", action = wezterm.action.DisableDefaultAssignment },
+        { key = "+", mods = "CTRL", action = wezterm.action.DisableDefaultAssignment },
+        { key = "0", mods = "CTRL", action = wezterm.action.DisableDefaultAssignment },
+        { key = "-", mods = "CTRL|SHIFT", action = wezterm.action.DisableDefaultAssignment },
+        { key = "_", mods = "CTRL|SHIFT", action = wezterm.action.DisableDefaultAssignment },
+        { key = "=", mods = "CTRL|SHIFT", action = wezterm.action.DisableDefaultAssignment },
+        { key = "+", mods = "CTRL|SHIFT", action = wezterm.action.DisableDefaultAssignment },
+        { key = "0", mods = "CTRL|SHIFT", action = wezterm.action.DisableDefaultAssignment },
+        { key = "+", mods = "CTRL|ALT|SHIFT", action = wezterm.action.IncreaseFontSize },
+        { key = "_", mods = "CTRL|ALT|SHIFT", action = wezterm.action.DecreaseFontSize },
+        { key = ")", mods = "CTRL|ALT|SHIFT", action = wezterm.action.ResetFontSize },
       },
     }
   '';

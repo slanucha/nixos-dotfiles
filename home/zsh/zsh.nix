@@ -16,8 +16,8 @@
     '';
 
     shellAliases = {
-      update = "nix flake update --flake ~/.dotfiles";
-      rebuild = "nh os switch ~/.dotfiles";
+      update = "nix flake update --flake ~/.nixos";
+      rebuild = "nh os switch ~/.nixos";
       ls = "eza";
       v = "nvim";
       sv = "sudo nvim";

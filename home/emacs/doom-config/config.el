@@ -8,6 +8,10 @@
 ;; Theme
 (setq doom-theme 'gruvbox-dark-medium)
 
+;; treemacs
+(global-set-key (kbd "C-c t") 'treemacs)
+(global-set-key (kbd "C-c C-t") 'treemacs-select-window)
+
 ;; drag-stuff
 (use-package! drag-stuff
   :config

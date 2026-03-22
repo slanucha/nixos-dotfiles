@@ -26,6 +26,7 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelModules = [ "kvm" "kvm-amd" ];
+  boot.initrd.systemd.enable = true;
   
   boot.initrd.luks.devices = {
     "luks-a979547a-263e-4e7a-a59c-088458d63533" = {
@@ -63,7 +64,9 @@
     interfaces.enp8s0.useDHCP = false;
     bridges.br0.interfaces = [ "enp8s0" ];
   };
-  
+
+  systemd.network.wait-online.anyInterface = true;
+
   # Time zone
   time.timeZone = "Europe/Warsaw";
 
@@ -93,15 +96,48 @@
   
   # Sound with pipewire
   services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
+
+  # PipeWire setup
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
+    # Keep this ON unless you *really* want pure ALSA apps only
     pulse.enable = true;
+    # Optional but recommended
+    jack.enable = true;
   };
-  hardware.alsa.enablePersistence = true;
 
+  # Required for real-time audio
+  security.rtkit.enable = true;
+
+  services.pipewire.wireplumber.extraConfig = {
+    "disable-sbz-acp" = {
+      "monitor.alsa.rules" = [
+        {
+          matches = [
+            { "device.name" = "alsa_card.pci-0000_06_00.0"; }
+          ];
+          actions = {
+            update-props = {
+              "api.alsa.use-acp" = false;
+            };
+          };
+        }
+      ];
+    };
+  };
+
+  systemd.services.alsa-restore = {
+    wantedBy = [ "multi-user.target" ];
+    after = [ "sound.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart =
+        "${pkgs.bash}/bin/bash -c 'sleep 1; ${pkgs.alsa-utils}/bin/alsactl restore'";
+    };
+  };
+  
   # Bluetooth
   hardware.bluetooth.enable = true;
   
@@ -142,6 +178,7 @@
       defaultNetwork.settings.dns_enabled = true;
     };
     libvirtd.enable = true;
+    libvirtd.qemu.swtpm.enable = true;
   };
   programs.virt-manager.enable = true;
 
@@ -176,6 +213,9 @@
 
   # Services to enable:
 
+   # SSD Optimization
+  services.fstrim.enable = true;
+  
   # OpenSSH daemon.
   services.openssh.enable = true;
 
