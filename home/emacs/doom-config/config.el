@@ -1,3 +1,5 @@
+(require 'ring)
+
 ;; UI cleanup
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -6,7 +8,8 @@
 (setq display-line-numbers-type t)
 
 ;; Theme
-(setq doom-theme 'gruvbox-dark-medium)
+;;(setq doom-theme 'gruvbox-dark-medium)
+(setq doom-theme 'modus-operandi)
 
 ;; treemacs
 (global-set-key (kbd "C-c t") 'treemacs)
@@ -17,6 +20,12 @@
   :config
   (drag-stuff-global-mode 1)
   (drag-stuff-define-keys))
+;; Map xterm-style modifier sequences to Emacs keys
+(define-key input-decode-map "\e[1;3A" [M-up])
+(define-key input-decode-map "\e[1;3B" [M-down])
+(define-key input-decode-map "\e[1;3C" [M-right])
+(define-key input-decode-map "\e[1;3D" [M-left])
+
 
 ;; Backups
 (setq backup-directory-alist

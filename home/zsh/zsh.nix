@@ -13,6 +13,9 @@
     initContent = ''
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
       export NIXPKGS_ALLOW_UNFREE=1
+      if ! pgrep -u "$USER" emacs >/dev/null; then
+        emacs --daemon
+      fi
     '';
 
     shellAliases = {
@@ -22,7 +25,6 @@
       v = "nvim";
       sv = "sudo nvim";
       em = "emacsclient -nw";
-      sem = "sudo emacsclient -nw";
     };
 
     history.size = 10000;
@@ -34,7 +36,7 @@
   # starship - an customizable prompt for any shell
   programs.starship = {
     enable = true;
-    settings = builtins.fromTOML (builtins.readFile ./starship-gruvbox-rainbow.toml);
+    settings = builtins.fromTOML (builtins.readFile ./nerd-font-symbols.toml);
   };
 
   # Easy shell environments

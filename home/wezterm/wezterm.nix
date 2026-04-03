@@ -10,14 +10,49 @@
       enable_wayland = true,
 
       font = wezterm.font("0xProto Nerd Font Mono"),
-      font_size = 12.0,
+      font_size = 13.0,
 
-      color_scheme = "Gruvbox dark, medium (base16)",
+      color_scheme = "Github Light (Gogh)",
 
       enable_tab_bar = true,
       use_fancy_tab_bar = false,
+      tab_bar_at_bottom = false,
 
-      window_background_opacity = 0.95,
+      colors = {
+        background = "#ffffff",
+        tab_bar = {
+          background = "#dee0e2",
+          active_tab = {
+            bg_color = "#ffffff",
+            fg_color = "#24292f",
+            intensity = "Bold",
+          },
+
+          inactive_tab = {
+            bg_color = "#f6f8fa",
+            fg_color = "#57606a",
+          },
+
+          inactive_tab_hover = {
+            bg_color = "#eaeef2",
+            fg_color = "#24292f",
+            italic = false,
+          },
+
+          new_tab = {
+            bg_color = "#f6f8fa",
+            fg_color = "#57606a",
+          },
+
+          new_tab_hover = {
+            bg_color = "#eaeef2",
+            fg_color = "#24292f",
+            italic = false,
+          },
+        },
+      },
+
+      window_background_opacity = 1.0,
 
       scrollback_lines = 10000,
 

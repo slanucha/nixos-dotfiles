@@ -113,7 +113,7 @@
     settings = {
       user.name = "Szymon Lanucha";
       user.email = "slann@protonmail.com";
-      core.editor = "nvim";
+      core.editor = "emacsclient -nw";
     };
   };
 
@@ -124,5 +124,4 @@
     doomLocalDir = "${config.xdg.dataHome}/nix-doom"; # required
     provideEmacs = true;
   };
-  services.emacs.enable = true;
 }
