@@ -3,6 +3,7 @@
 ;; UI cleanup
 (menu-bar-mode -1)
 (tool-bar-mode -1)
+(setq doom-font (font-spec :family "0xProto Nerd Font Mono" :size 20 ))
 
 ;; Line numbers
 (setq display-line-numbers-type t)

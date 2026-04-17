@@ -12,7 +12,7 @@
       font = wezterm.font("0xProto Nerd Font Mono"),
       font_size = 13.0,
 
-      color_scheme = "Github Light (Gogh)",
+      color_scheme = "Modus-Operandi",
 
       enable_tab_bar = true,
       use_fancy_tab_bar = false,
@@ -52,13 +52,13 @@
         },
       },
 
-      window_background_opacity = 1.0,
+      window_background_opacity = 0.96,
 
       scrollback_lines = 10000,
 
       window_padding = {
-        left = 6,
-        right = 6,
+        left = 2,
+        right = 2,
         top = 6,
         bottom = 6,
       },

@@ -26,7 +26,6 @@
     # browsers
     firefox
     google-chrome
-    vivaldi
     thunderbird
     # mail
     evolution
@@ -89,6 +88,7 @@
     usbutils # lsusb
     minicom
     rpi-imager
+    veracrypt
     # virtualisation
     distrobox
     man-pages
@@ -118,6 +118,7 @@
   };
 
   # Doom Emacs
+  services.emacs.enable = true;
   programs.doom-emacs = {
     enable = true;
     doomDir = ./home/emacs/doom-config;

@@ -34,25 +34,29 @@
     };
   };
 
-  environment.etc.crypttab.text = ''secure-store UUID=00026934-712f-4dae-ac09-863df3764e13 /root/lukskey'';
+  environment.etc.crypttab.text = ''
+    data-dev   UUID=059c4415-f877-4369-a989-9b076e150401 /root/lukskey
+    data-space UUID=00026934-712f-4dae-ac09-863df3764e13 /root/lukskey
+    data-share /dev/sdb                                  /dev/null tcrypt-veracrypt,tcrypt-keyfile=/root/lukskey
+  '';
 
   fileSystems = {
-    "/mnt/CodeStore" = {
-      device = "/dev/disk/by-uuid/faed103c-f676-4b4a-873d-1f56af5c4800";
-      fsType = "btrfs";
+    "/data/dev" = {
+      device = "/dev/mapper/data-dev";
+      fsType = "ext4";
       options = [ "defaults" ];
     };
 
-    "/mnt/SharedStore" = {
-      device = "/dev/disk/by-uuid/6274B09274B06A85";
+    "/data/space" = {
+     device = "/dev/mapper/data-space";
+     fsType = "ext4";
+     options = [ "defaults" ];
+    };
+
+    "/data/share" = {
+      device = "/dev/mapper/data-share";
       fsType = "ntfs";
       options = [ "uid=1001" "gid=100" "umask=0022" ];
-    };
-
-    "/mnt/SecureStore" = {
-      device = "/dev/mapper/secure-store";
-      fsType = "btrfs";
-      options = [ "defaults" ];
     };
   };
   
@@ -183,7 +187,7 @@
   programs.virt-manager.enable = true;
 
   # Flatpak
-  services.flatpak.enable = true;
+  # services.flatpak.enable = true;
 
   # Fonts
   fonts = {
