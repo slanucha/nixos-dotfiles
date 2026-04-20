@@ -20,6 +20,10 @@
       url = "github:marienz/nix-doom-emacs-unstraightened";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+    };
   };
 
   outputs =
@@ -35,6 +39,7 @@
       commonImports = [
         ./home.nix
         ./home/zsh/zsh.nix
+        ./home/nixvim/nixvim.nix
         ./home/wezterm/wezterm.nix
         #./home/emacs/emacs.nix
         ./home/vscode/vscode.nix
@@ -50,7 +55,7 @@
         home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
         home-manager.backupFileExtension = "backup";
         home-manager.users.slan = {
-          imports = commonImports ++ [ inputs.nix-doom-emacs-unstraightened.homeModule ];
+          imports = commonImports ++ [ inputs.nix-doom-emacs-unstraightened.homeModule inputs.nixvim.homeModules.nixvim ];
         };
       };
       
