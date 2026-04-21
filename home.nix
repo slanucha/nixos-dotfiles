@@ -118,6 +118,11 @@
     };
   };
 
+  home.file.".config/lvim/config.lua" = {
+    source = ./home/lunarvim/config.lua;
+    force = true;
+  };
+
   # Doom Emacs
   services.emacs.enable = true;
   programs.doom-emacs = {
