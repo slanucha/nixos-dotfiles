@@ -11,7 +11,7 @@
 
   # Kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
+  boot.kernelModules = [ "kvm" "kvm-intel" ];
 
   boot.initrd.luks.devices."luks-39cc0dc5-bfd3-45de-8dbf-910490d73c89".device =
     "/dev/disk/by-uuid/39cc0dc5-bfd3-45de-8dbf-910490d73c89";
@@ -42,7 +42,10 @@
   console.keyMap = "pl2";
 
   # CUPS
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.hplip ];
+  };
 
   # Sound with pipewire
   services.pulseaudio.enable = false;
@@ -54,18 +57,28 @@
     pulse.enable = true;
   };
 
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+
   # Touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
+
+  # ZSH
+  programs.zsh.enable = true;
 
   # User account
   users.users.slan = {
     isNormalUser = true;
     description = "Szymon Łanucha";
+    shell = pkgs.zsh;
     extraGroups = [
       "networkmanager"
       "wheel"
-      "docker"
+      "podman"
       "vboxusers"
+      "dialout"
+      "plugdev"
+      "libvirtd"
     ];
   };
 
@@ -73,8 +86,20 @@
   nixpkgs.config.allowUnfree = true;
 
   # Virtualisation
-  virtualisation.docker.enable = true;
-  virtualisation.virtualbox.host.enable = true;
+  # Enable common container config files in /etc/containers
+  virtualisation.containers.enable = true;
+  virtualisation = {
+    podman = {
+      enable = true;
+      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      dockerCompat = true;
+      # Required for containers under podman-compose to be able to talk to each other.
+      defaultNetwork.settings.dns_enabled = true;
+    };
+    libvirtd.enable = true;
+    libvirtd.qemu.swtpm.enable = true;
+  };
+  programs.virt-manager.enable = true;
 
   # Flatpak
   services.flatpak.enable = true;
@@ -96,11 +121,11 @@
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
-    neovim
     wget
     killall
     alsa-utils
     nh
+    vim
   ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -109,12 +134,6 @@
 
   # OpenSSH daemon.
   services.openssh.enable = true;
-
-  # Enable Emacs daemon.
-  services.emacs = {
-    enable = true;
-    package = pkgs.emacs-pgtk;
-  };
 
   # Cleanup
   nix.gc = {

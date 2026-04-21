@@ -14,6 +14,7 @@
   # Packages
   home.packages = with pkgs; [
     # editors
+    lunarvim
     libreoffice-qt
     hunspell
     hunspellDicts.pl_PL

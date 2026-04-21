@@ -38,14 +38,14 @@
     let
       commonImports = [
         ./home.nix
-        ./home/zsh/zsh.nix
-        ./home/nixvim/nixvim.nix
-        ./home/wezterm/wezterm.nix
-        #./home/emacs/emacs.nix
-        ./home/vscode/vscode.nix
         ./home/kde/plasma.nix
-        #./home/gnome/gnome.nix
+        ./home/nixvim/nixvim.nix
+        ./home/vscode/vscode.nix
+        ./home/wezterm/wezterm.nix
+        ./home/zsh/zsh.nix
         #./home/bash/bash.nix
+        #./home/emacs/emacs.nix
+        #./home/gnome/gnome.nix
       ];
 
       homeManagerConfig = {

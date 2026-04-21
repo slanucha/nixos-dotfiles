@@ -1,0 +1,63 @@
+[Background]
+Color=255,255,255
+
+[BackgroundIntense]
+Color=245,245,245
+
+[Foreground]
+Color=0,0,0
+
+[ForegroundIntense]
+Color=0,0,0
+
+# Black
+[Color0]
+Color=0,0,0
+[Color8]
+Color=85,85,85
+
+# Red
+[Color1]
+Color=160,0,0
+[Color9]
+Color=200,0,0
+
+# Green
+[Color2]
+Color=0,128,0
+[Color10]
+Color=0,160,0
+
+# Yellow
+[Color3]
+Color=128,96,0
+[Color11]
+Color=160,128,0
+
+# Blue
+[Color4]
+Color=0,0,160
+[Color12]
+Color=0,0,200
+
+# Magenta
+[Color5]
+Color=128,0,128
+[Color13]
+Color=160,0,160
+
+# Cyan
+[Color6]
+Color=0,128,128
+[Color14]
+Color=0,160,160
+
+# White
+[Color7]
+Color=192,192,192
+[Color15]
+Color=255,255,255
+
+[General]
+Description=Modus Operandi (Emacs-inspired)
+Opacity=1
