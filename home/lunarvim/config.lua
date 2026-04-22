@@ -5,6 +5,8 @@ lvim.plugins = {
 
 lvim.colorscheme = "modus_operandi"
 
+lvim.builtin.lualine.style = "default"
+
 vim.opt.tabstop = 2
 vim.opt.relativenumber = true
 vim.opt.wrap = true
