@@ -12,19 +12,18 @@
       font = wezterm.font("0xProto Nerd Font Mono"),
       font_size = 13.0,
 
-      color_scheme = "Modus-Operandi",
+      color_scheme = "Rosé Pine Moon (Gogh)",
 
       enable_tab_bar = true,
       use_fancy_tab_bar = false,
       tab_bar_at_bottom = false,
 
       colors = {
-        background = "#ffffff",
         tab_bar = {
-          background = "#dee0e2",
+          background = "#faf4ed",
           active_tab = {
-            bg_color = "#ffffff",
-            fg_color = "#24292f",
+            bg_color = "#232136",
+            fg_color = "#e0def4",
             intensity = "Bold",
           },
 

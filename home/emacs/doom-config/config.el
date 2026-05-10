@@ -10,7 +10,8 @@
 
 ;; Theme
 ;;(setq doom-theme 'gruvbox-dark-medium)
-(setq doom-theme 'modus-operandi)
+;;(setq doom-theme 'modus-operandi)
+(setq doom-theme 'doom-rose-pine-moon)
 
 ;; treemacs
 (global-set-key (kbd "C-c t") 'treemacs)

@@ -1,5 +1,6 @@
 lvim.plugins = {
   { "miikanissi/modus-themes.nvim", priority = 1000 },
+  { "rose-pine/vim", priority = 1000 },
 
   { "tpope/vim-fugitive" },
 
@@ -25,7 +26,8 @@ lvim.plugins = {
   }
 }
 
-lvim.colorscheme = "modus_operandi"
+-- lvim.colorscheme = "modus_operandi"
+lvim.colorscheme = "rosepine_moon"
 
 lvim.builtin.lualine.style = "default"
 

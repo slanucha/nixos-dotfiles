@@ -15,6 +15,7 @@
   home.packages = with pkgs; [
     # editors
     lunarvim
+    neovide
     libreoffice-qt
     hunspell
     hunspellDicts.pl_PL
@@ -114,7 +115,7 @@
     settings = {
       user.name = "Szymon Lanucha";
       user.email = "slann@protonmail.com";
-      core.editor = "emacsclient -nw";
+      core.editor = "lvim";
     };
   };
 
@@ -124,7 +125,7 @@
   };
 
   # Doom Emacs
-  services.emacs.enable = true;
+  # services.emacs.enable = true;
   programs.doom-emacs = {
     enable = true;
     doomDir = ./home/emacs/doom-config;

@@ -211,6 +211,8 @@
     alsa-utils
     nh
     vim
+    wineWowPackages.stable
+    winetricks
   ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -244,6 +246,8 @@
     SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="3757", MODE="0666", GROUP="plugdev"
     SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="3758", MODE="0666", GROUP="plugdev"
   '';
+
+  services.samba.enable = true;
 
   # Cleanup
   nix.gc = {
