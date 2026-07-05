@@ -18,6 +18,10 @@
       if ! pgrep -u "$USER" emacs >/dev/null; then
           emacs --daemon
       fi
+
+      if [[ -n "$CONTAINER_ID" ]]; then
+        alias nvim='distrobox-host-exec nvim'
+      fi
     '';
 
     shellAliases = {

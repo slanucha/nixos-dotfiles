@@ -37,36 +37,37 @@
   environment.etc.crypttab.text = ''
     data-dev   UUID=059c4415-f877-4369-a989-9b076e150401 /root/lukskey
     data-space UUID=00026934-712f-4dae-ac09-863df3764e13 /root/lukskey
-    data-share /dev/sdb                                  /dev/null tcrypt-veracrypt,tcrypt-keyfile=/root/lukskey
+    data-media UUID=b869dd62-d7d5-4640-9b9f-50ef1dd90b15 /root/lukskey
   '';
+
 
   fileSystems = {
     "/data/dev" = {
       device = "/dev/mapper/data-dev";
       fsType = "ext4";
-      options = [ "defaults" ];
+      options = [ "nofail" "defaults" ];
     };
 
     "/data/space" = {
      device = "/dev/mapper/data-space";
      fsType = "ext4";
-     options = [ "defaults" ];
+     options = [ "nofail" "defaults" ];
     };
 
     "/data/share" = {
       device = "/dev/mapper/data-share";
       fsType = "ntfs";
-      options = [ "uid=1001" "gid=100" "umask=0022" ];
+      options = [ "nofail" "uid=1001" "gid=100" "umask=0022" ];
     };
   };
   
   # Networking
   networking = {
     hostName = "aorus";
-    # networkmanager.enable = true;
-    interfaces.br0.useDHCP = true;
-    interfaces.enp8s0.useDHCP = false;
-    bridges.br0.interfaces = [ "enp8s0" ];
+    networkmanager.enable = true;
+    #interfaces.br0.useDHCP = true;
+    #interfaces.enp8s0.useDHCP = false;
+    #bridges.br0.interfaces = [ "enp8s0" ];
   };
 
   systemd.network.wait-online.anyInterface = true;
@@ -98,18 +99,13 @@
     drivers = [ pkgs.hplip ];
   };
   
-  # Sound with pipewire
-  services.pulseaudio.enable = false;
 
   # PipeWire setup
   services.pipewire = {
     enable = true;
     alsa.enable = true;
-    alsa.support32Bit = true;
-    # Keep this ON unless you *really* want pure ALSA apps only
     pulse.enable = true;
-    # Optional but recommended
-    jack.enable = true;
+    wireplumber.enable = true;
   };
 
   # Required for real-time audio
@@ -164,6 +160,7 @@
       "dialout"
       "plugdev"
       "libvirtd"
+      "cdrom"
     ];
   };
 
@@ -187,7 +184,7 @@
   programs.virt-manager.enable = true;
 
   # Flatpak
-  # services.flatpak.enable = true;
+  services.flatpak.enable = true;
 
   # Fonts
   fonts = {
@@ -211,9 +208,17 @@
     alsa-utils
     nh
     vim
-    wineWowPackages.stable
+    wineWow64Packages.stable
     winetricks
   ];
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  }; 
+
+  programs.k3b.enable = true;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
@@ -269,5 +274,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.11"; # Did you read the comment?
+  system.stateVersion = "26.05"; # Did you read the comment?
 }

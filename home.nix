@@ -9,12 +9,11 @@
 {
   home.username = "slan";
   home.homeDirectory = "/home/slan";
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
 
   # Packages
   home.packages = with pkgs; [
     # editors
-    lunarvim
     neovide
     libreoffice-qt
     hunspell
@@ -32,7 +31,7 @@
     # mail
     evolution
     # proton
-    protonvpn-gui
+    proton-vpn
     pass
     # multimedia
     ani-cli
@@ -75,7 +74,7 @@
     # nix related
     nixd
     nix-output-monitor
-    nixfmt-rfc-style
+    nixfmt
     nix-direnv
     nix-index
     # system call monitoring
@@ -90,12 +89,11 @@
     usbutils # lsusb
     minicom
     rpi-imager
-    veracrypt
     # virtualisation
     distrobox
     man-pages
     # remote
-    realvnc-vnc-viewer
+    # realvnc-vnc-viewer - dependency failed!
     # Nix Search TV
     # (pkgs.writeShellApplication {
     #   name = "ns";
@@ -115,14 +113,14 @@
     settings = {
       user.name = "Szymon Lanucha";
       user.email = "slann@protonmail.com";
-      core.editor = "lvim";
+      core.editor = "nvim";
     };
   };
 
-  home.file.".config/lvim/config.lua" = {
-    source = ./home/lunarvim/config.lua;
-    force = true;
-  };
+  # home.file.".config/lvim/config.lua" = {
+  #   source = ./home/lunarvim/config.lua;
+  #   force = true;
+  # };
 
   # Doom Emacs
   # services.emacs.enable = true;

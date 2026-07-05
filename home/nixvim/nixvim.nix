@@ -7,6 +7,11 @@
   programs.nixvim = {
     enable = true;
 
+    globals = {
+      mapleader = " ";
+      maplocalleader = " ";
+    };
+
     opts = {
       number = true;
       relativenumber = true;
@@ -18,6 +23,12 @@
     colorschemes.modus = {
       enable = true;
     };
+
+    extraConfigLua = ''
+      if vim.g.neovide then
+        vim.o.background = "light"
+      end
+    '';
 
     plugins = {
       lualine.enable = true;
@@ -42,5 +53,28 @@
       gitsigns.enable = true;
       neo-tree.enable = true;
     };
+
+    keymaps = [
+      {
+        mode = "i";
+        key = "<C-h>";
+        action = "<Left>";
+      }
+      {
+        mode = "i";
+        key = "<C-l>";
+        action = "<Right>";
+      }
+      {
+        mode = "i";
+        key = "<C-j>";
+        action = "<Down>";
+      }
+      {
+        mode = "i";
+        key = "<C-k>";
+        action = "<Up>";
+      }
+    ];
   };
 }
