@@ -32,6 +32,7 @@
 
     plugins = {
       lualine.enable = true;
+      bufferline.enable = true;
       telescope.enable = true;
       web-devicons.enable = true;
       fugitive.enable = true;
