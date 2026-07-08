@@ -37,9 +37,9 @@
   environment.etc.crypttab.text = ''
     data-dev   UUID=059c4415-f877-4369-a989-9b076e150401 /root/lukskey
     data-space UUID=00026934-712f-4dae-ac09-863df3764e13 /root/lukskey
-    data-media UUID=b869dd62-d7d5-4640-9b9f-50ef1dd90b15 /root/lukskey
   '';
 
+  # data-media UUID=b869dd62-d7d5-4640-9b9f-50ef1dd90b15 /root/lukskey
 
   fileSystems = {
     "/data/dev" = {
@@ -53,14 +53,13 @@
      fsType = "ext4";
      options = [ "nofail" "defaults" ];
     };
-
-    "/data/share" = {
-      device = "/dev/mapper/data-share";
-      fsType = "ntfs";
-      options = [ "nofail" "uid=1001" "gid=100" "umask=0022" ];
-    };
   };
-  
+  #"/data/media" = {
+  #    device = "/dev/mapper/data-media";
+  #    fsType = "ext4";
+  #    options = [ "nofail" "defaults" ];
+  #  };
+
   # Networking
   networking = {
     hostName = "aorus";
