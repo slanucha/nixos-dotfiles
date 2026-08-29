@@ -46,7 +46,29 @@
         enable = true;
         servers = {
           nixd.enable = true;
+          
           clangd.enable = true;
+
+          rust_analyzer = {
+            enable = true;
+            installCargo = true;
+            installRustc = true;
+            settings = {
+              cargo = {
+                buildScripts.enable = true;
+              };
+            };
+          };
+
+        };
+      };
+
+      which-key = {
+        enable = true;
+
+        settings = {
+          delay = 300;
+          preset = "modern";
         };
       };
 
@@ -75,6 +97,46 @@
         mode = "i";
         key = "<C-k>";
         action = "<Up>";
+      }
+      {
+        mode = "n";
+        key = "<leader>w";
+        action = "<cmd>write<CR>";
+        options.desc = "Write file";
+      }
+
+      {
+        mode = "n";
+        key = "<leader>q";
+        action = "<cmd>quit<CR>";
+        options.desc = "Quit";
+      }
+
+      {
+        mode = "n";
+        key = "<leader>bn";
+        action = "<cmd>bnext<CR>";
+        options.desc = "Next buffer";
+      }
+
+      {
+        mode = "n";
+        key = "<leader>bp";
+        action = "<cmd>bprevious<CR>";
+        options.desc = "Previous buffer";
+      }
+
+      {
+        mode = "n";
+        key = "<leader>bd";
+        action = "<cmd>bdelete<CR>";
+        options.desc = "Delete buffer";
+      }
+      {
+        mode = "n";
+        key = "<leader>bb";
+        action = "<cmd>Telescope buffers<CR>";
+        options.desc = "Buffers";
       }
     ];
   };

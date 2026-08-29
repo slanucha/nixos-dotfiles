@@ -25,7 +25,7 @@
   
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelModules = [ "kvm" "kvm-amd" ];
+  boot.kernelModules = [ "kvm" "kvm-amd" "sg" ];
   boot.initrd.systemd.enable = true;
   
   boot.initrd.luks.devices = {
@@ -37,9 +37,8 @@
   environment.etc.crypttab.text = ''
     data-dev   UUID=059c4415-f877-4369-a989-9b076e150401 /root/lukskey
     data-space UUID=00026934-712f-4dae-ac09-863df3764e13 /root/lukskey
+    data-media UUID=cc63fffe-d746-404e-bc60-6f7c81dbddbb /root/lukskey
   '';
-
-  # data-media UUID=b869dd62-d7d5-4640-9b9f-50ef1dd90b15 /root/lukskey
 
   fileSystems = {
     "/data/dev" = {
@@ -53,12 +52,13 @@
      fsType = "ext4";
      options = [ "nofail" "defaults" ];
     };
+   
+    "/data/media" = {
+      device = "/dev/mapper/data-media";
+      fsType = "ext4";
+      options = [ "nofail" "defaults" ];
+    };
   };
-  #"/data/media" = {
-  #    device = "/dev/mapper/data-media";
-  #    fsType = "ext4";
-  #    options = [ "nofail" "defaults" ];
-  #  };
 
   # Networking
   networking = {
@@ -145,7 +145,7 @@
 
   # ZSH
   programs.zsh.enable = true;
-  
+ 
   # User account
   users.users.slan = {
     isNormalUser = true;

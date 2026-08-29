@@ -13,14 +13,16 @@
     initContent = ''
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
       export NIXPKGS_ALLOW_UNFREE=1
+      export CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000
       
       # Workaround for the Emacs service that may be no longer needed
-      if ! pgrep -u "$USER" emacs >/dev/null; then
-          emacs --daemon
-      fi
+      # if ! pgrep -u "$USER" emacs >/dev/null; then
+      #    emacs --daemon
+      # fi
 
       if [[ -n "$CONTAINER_ID" ]]; then
         alias nvim='distrobox-host-exec nvim'
+        export PATH=$PATH:~/.cargo/bin
       fi
     '';
 
@@ -37,6 +39,10 @@
     history.ignoreAllDups = true;
     history.path = "$HOME/.zsh_history";
     history.ignorePatterns = ["rm *" "pkill *" "cp *"];
+
+    sessionVariables = {
+      COLORTERM = "truecolor";
+    };
   };
 
   # starship - an customizable prompt for any shell

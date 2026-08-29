@@ -28,6 +28,7 @@
     firefox
     google-chrome
     thunderbird
+    vivaldi
     # mail
     evolution
     # proton
@@ -40,6 +41,8 @@
     amarok
     fooyin
     moc
+    easytag
+    makemkv
     # (fooyin.overrideAttrs (old: {
     #   patches = (old.patches or []) ++ [
     #     ./home/fooyin/qt610-align.patch
@@ -89,6 +92,7 @@
     usbutils # lsusb
     minicom
     rpi-imager
+    cdrtools
     # virtualisation
     distrobox
     man-pages
@@ -104,7 +108,11 @@
     #   text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
     # })
     bear
+    # development
     clang-tools
+    rust-analyzer
+    ollama-rocm
+    claude-code
   ];
 
   # git configuration
@@ -123,7 +131,7 @@
   # };
 
   # Doom Emacs
-  # services.emacs.enable = true;
+  services.emacs.enable = true;
   programs.doom-emacs = {
     enable = true;
     doomDir = ./home/emacs/doom-config;
