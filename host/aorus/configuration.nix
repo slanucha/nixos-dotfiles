@@ -209,6 +209,7 @@
     vim
     wineWow64Packages.stable
     winetricks
+    input-remapper
   ];
 
   programs.steam = {
@@ -223,7 +224,13 @@
 
   # Services to enable:
 
-   # SSD Optimization
+  # Input
+  services.input-remapper = {
+    enable = true;
+    enableUdevRules = true;
+  };
+
+  # SSD Optimization
   services.fstrim.enable = true;
   
   # OpenSSH daemon.
@@ -249,6 +256,10 @@
     SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="3755", MODE="0666", GROUP="plugdev"
     SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="3757", MODE="0666", GROUP="plugdev"
     SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="3758", MODE="0666", GROUP="plugdev"
+
+    # uinput/input
+    KERNEL=="uinput", GROUP="input", MODE="0660", OPTIONS+="static_node=uinput"
+    SUBSYSTEM=="input", ATTRS{name}=="*input-remapper*", GROUP="input", MODE="0660"
   '';
 
   services.samba.enable = true;

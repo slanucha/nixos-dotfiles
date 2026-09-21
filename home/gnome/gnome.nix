@@ -16,10 +16,6 @@
     gnomeExtensions.caffeine
   ];
 
-  # home.sessionVariables = {
-  #   GTK_THEME = "Adwaita:dark";
-  # };
-
   dconf.settings = {
     "org/gnome/shell" = {
       enabled-extensions = [
@@ -34,20 +30,17 @@
       disabled-extensions = [ ];
 
       favorite-apps = [
-        "brave-browser.desktop"
-        "evolution.desktop"
-        "org.gnome.Ptyxis.desktop"
         "org.gnome.Nautilus.desktop"
       ];
     };
 
     "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
+      color-scheme = "default";
       monospace-font-name = "0xProto Nerd Font Mono 12";
     };
 
     "org/gnome/desktop/default-applications/terminal" = {
-      exec = "ptyxis";
+      exec = "ghostty";
       exec-arg = "";
     };
 
@@ -62,7 +55,7 @@
 
     "org/gnome/desktop/interface" = {
       scaling-factor = 1;
-      text-scaling-factor = 1.25;
+      text-scaling-factor = 1;
     };
   };
 }

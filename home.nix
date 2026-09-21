@@ -15,12 +15,12 @@
   home.packages = with pkgs; [
     # editors
     neovide
-    libreoffice-qt
+    libreoffice
     hunspell
     hunspellDicts.pl_PL
     vista-fonts
     # graphics
-    krita
+#     krita
     gimp3-with-plugins
     inkscape-with-extensions
     rawtherapee
@@ -28,7 +28,6 @@
     firefox
     google-chrome
     thunderbird
-    vivaldi
     # mail
     evolution
     # proton
@@ -38,11 +37,13 @@
     ani-cli
     libdvdread
     vlc
-    amarok
-    fooyin
+    #amarok
+    #fooyin
     moc
     easytag
     makemkv
+    gapless
+    plattenalbum
     # (fooyin.overrideAttrs (old: {
     #   patches = (old.patches or []) ++ [
     #     ./home/fooyin/qt610-align.patch
@@ -54,7 +55,7 @@
     unzip
     p7zip
     # utils
-    ptyxis
+    #ptyxis
     fastfetch
     ripgrep # recursively searches directories for a regex pattern
     eza # A modern replacement for ‘ls’
@@ -85,6 +86,7 @@
     ltrace # library call monitoring
     lsof # list open files
     # system tools
+    ghostty
     sysstat
     lm_sensors # for `sensors` command
     ethtool
@@ -137,5 +139,71 @@
     doomDir = ./home/emacs/doom-config;
     doomLocalDir = "${config.xdg.dataHome}/nix-doom"; # required
     provideEmacs = true;
+  };
+
+  programs.vivaldi = {
+    enable = true;
+#     commandLineArgs = [
+#       "--password-store=kwallet6"
+#     ];
+  };
+
+  programs.ghostty = {
+    enable = true;
+    package = if pkgs.stdenv.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
+    enableZshIntegration = true;
+    settings = {
+      # Font Configuration
+      font-size = 12;
+
+      # Window Configuration
+      window-decoration = false;
+      window-padding-x = 12;
+      window-padding-y = 12;
+      background-opacity = 0.9;
+      background-blur-radius = 32;
+
+      # Cursor Configuration
+      cursor-style = "block";
+      cursor-style-blink = true;
+
+      # Scrollback
+      scrollback-limit = 3023;
+
+      # Terminal features
+      mouse-hide-while-typing = true;
+      copy-on-select = false;
+      confirm-close-surface = false;
+
+      # Disable in-app Ghostty toast notifications
+      app-notifications = false;
+
+      # Key bindings
+      keybind = [
+        "ctrl+shift+n=new_window"
+        "ctrl+t=new_tab"
+        "ctrl+plus=increase_font_size:1"
+        "ctrl+minus=decrease_font_size:1"
+        "ctrl+zero=reset_font_size"
+        "shift+enter=text:\\n"
+      ];
+
+      # Material 3 UI elements
+      unfocused-split-opacity = 0.7;
+      unfocused-split-fill = "#44464f";
+
+      # Tab configuration
+      gtk-titlebar = false;
+
+      # Shell integration
+      shell-integration = "detect";
+      shell-integration-features = "cursor,sudo,title,no-cursor";
+
+      # GTK / System integration
+      gtk-single-instance = true;
+
+      # Theme
+      theme = "Modus Operandi";
+    };
   };
 }

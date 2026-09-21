@@ -3,9 +3,9 @@
 {
   # Enable GNOME desktop
   services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.displayManager.gdm.wayland = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
+  services.gnome.core-developer-tools.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -25,10 +25,20 @@
     dconf-editor
     gnome-keyring
     adw-gtk3
+    # Themes the app titlebars
+    qadwaitadecorations
+    qadwaitadecorations-qt6
+    # Themes the apps
+    qgnomeplatform
+    qgnomeplatform-qt6
   ];
 
   environment.gnome.excludePackages = with pkgs; [
     geary
     gnome-terminal
+  ];
+
+  home-manager.users.slan.imports = [
+    ../home/gnome/gnome.nix
   ];
 }

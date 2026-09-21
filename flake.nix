@@ -24,6 +24,11 @@
     nixvim = {
       url = "github:nix-community/nixvim/nixos-26.05";
     };
+
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -38,14 +43,12 @@
     let
       commonImports = [
         ./home.nix
-        ./home/kde/plasma.nix
         ./home/nixvim/nixvim.nix
         ./home/vscode/vscode.nix
         ./home/wezterm/wezterm.nix
         ./home/zsh/zsh.nix
         #./home/bash/bash.nix
         #./home/emacs/emacs.nix
-        #./home/gnome/gnome.nix
       ];
 
       homeManagerConfig = {
@@ -54,15 +57,14 @@
         home-manager.useUserPackages = true;
         home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
         home-manager.backupFileExtension = "backup";
+        home-manager.extraSpecialArgs = { inherit inputs; };
         home-manager.users.slan = {
           imports = commonImports ++ [ inputs.nix-doom-emacs-unstraightened.homeModule inputs.nixvim.homeModules.nixvim ];
         };
       };
       
       commonModules = [
-        #./modules/gnome.nix
-        ./modules/flatpak.nix
-        ./modules/kde.nix
+        ./module/flatpak.nix
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
         homeManagerConfig
@@ -72,11 +74,18 @@
     {
       nixosConfigurations = {
         aorus = nixpkgs.lib.nixosSystem {
-          modules = commonModules ++ [ ./hosts/aorus/configuration.nix ];
+          specialArgs = { inherit inputs; };
+          modules = commonModules ++ [
+            ./desktop/gnome.nix
+            ./desktop/niri.nix
+            ./host/aorus/configuration.nix ];
         };
 
         thinkpad = nixpkgs.lib.nixosSystem {
-          modules = commonModules ++ [ ./hosts/thinkpad/configuration.nix ];
+          specialArgs = { inherit inputs; };
+          modules = commonModules ++ [
+            ./desktop/kde.nix
+            ./host/thinkpad/configuration.nix ];
         };
       };
     };

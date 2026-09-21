@@ -25,6 +25,7 @@
 
   # Optional: KDE-specific utilities or apps
   environment.systemPackages = with pkgs; [
+    kdePackages.plasma-workspace
     kdePackages.dolphin
     kdePackages.konsole
     kdePackages.kate
@@ -59,5 +60,9 @@
   # Remove unwanted default KDE apps (optional)
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     konqueror
+  ];
+
+  home-manager.users.slan.imports = [
+    ../home/kde/plasma.nix
   ];
 }
