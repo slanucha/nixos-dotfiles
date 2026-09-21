@@ -19,43 +19,38 @@
     hunspell
     hunspellDicts.pl_PL
     vista-fonts
+    
     # graphics
-#     krita
     gimp3-with-plugins
     inkscape-with-extensions
     rawtherapee
+
     # browsers
     firefox
     google-chrome
-    thunderbird
+
     # mail
-    evolution
+    thunderbird
+
     # proton
     proton-vpn
     pass
+    
     # multimedia
     ani-cli
     libdvdread
     vlc
-    #amarok
-    #fooyin
     moc
     easytag
     makemkv
     gapless
     plattenalbum
-    # (fooyin.overrideAttrs (old: {
-    #   patches = (old.patches or []) ++ [
-    #     ./home/fooyin/qt610-align.patch
-    #   ];
-    # }))
-    # archives
+    
+    # utils
     zip
     xz
     unzip
     p7zip
-    # utils
-    #ptyxis
     fastfetch
     ripgrep # recursively searches directories for a regex pattern
     eza # A modern replacement for ‘ls’
@@ -75,16 +70,19 @@
     zstd
     gnupg
     unrar
+   
     # nix related
     nixd
     nix-output-monitor
     nixfmt
     nix-direnv
     nix-index
+    
     # system call monitoring
     strace # system call monitoring
     ltrace # library call monitoring
     lsof # list open files
+    
     # system tools
     ghostty
     sysstat
@@ -95,21 +93,12 @@
     minicom
     rpi-imager
     cdrtools
+    
     # virtualisation
     distrobox
     man-pages
-    # remote
-    # realvnc-vnc-viewer - dependency failed!
-    # Nix Search TV
-    # (pkgs.writeShellApplication {
-    #   name = "ns";
-    #   runtimeInputs = with pkgs; [
-    #     fzf
-    #     nix-search-tv
-    #   ];
-    #   text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
-    # })
     bear
+    
     # development
     clang-tools
     rust-analyzer
@@ -143,9 +132,9 @@
 
   programs.vivaldi = {
     enable = true;
-#     commandLineArgs = [
-#       "--password-store=kwallet6"
-#     ];
+    # commandLineArgs = [
+    #   "--password-store=kwallet6"
+    # ];
   };
 
   programs.ghostty = {

@@ -139,7 +139,10 @@
   
   # Bluetooth
   hardware.bluetooth.enable = true;
-  
+ 
+  # Load i2c-dev kernel module and create udev rules for the i2c group
+  hardware.i2c.enable = true;
+
   # Touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
@@ -160,6 +163,7 @@
       "plugdev"
       "libvirtd"
       "cdrom"
+      "i2c"
     ];
   };
 
@@ -210,6 +214,7 @@
     wineWow64Packages.stable
     winetricks
     input-remapper
+    ddcutil
   ];
 
   programs.steam = {
