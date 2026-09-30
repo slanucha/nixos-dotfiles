@@ -3,6 +3,7 @@
 {
   # Enable Niri system-wide
   programs.niri.enable = true;
+  programs.xwayland.enable = true;
 
   environment.variables = {
     QT_QPA_PLATFORMTHEME = "gtk3";
@@ -20,7 +21,12 @@
         restartIfChanged = true;
       };
     };
+    
+    home.packages = with pkgs; [
+      xwayland-satellite
+    ];
 
     systemd.user.services.dms.Install.WantedBy = lib.mkForce [ "niri.service" ];
   };
+
 }

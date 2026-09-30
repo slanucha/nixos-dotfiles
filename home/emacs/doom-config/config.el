@@ -6,7 +6,7 @@
 (setq doom-font (font-spec :family "0xProto Nerd Font Mono" :size 20 ))
 
 ;; Line numbers
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
 
 ;; Theme
 ;;(setq doom-theme 'gruvbox-dark-medium)

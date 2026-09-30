@@ -43,8 +43,6 @@
     moc
     easytag
     makemkv
-    gapless
-    plattenalbum
     
     # utils
     zip
@@ -84,7 +82,6 @@
     lsof # list open files
     
     # system tools
-    ghostty
     sysstat
     lm_sensors # for `sensors` command
     ethtool
@@ -112,7 +109,7 @@
     settings = {
       user.name = "Szymon Lanucha";
       user.email = "slann@protonmail.com";
-      core.editor = "nvim";
+      core.editor = "emacs -nw";
     };
   };
 
@@ -132,67 +129,6 @@
 
   programs.vivaldi = {
     enable = true;
-    # commandLineArgs = [
-    #   "--password-store=kwallet6"
-    # ];
   };
 
-  programs.ghostty = {
-    enable = true;
-    package = if pkgs.stdenv.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
-    enableZshIntegration = true;
-    settings = {
-      # Font Configuration
-      font-size = 12;
-
-      # Window Configuration
-      window-decoration = false;
-      window-padding-x = 12;
-      window-padding-y = 12;
-      background-opacity = 0.9;
-      background-blur-radius = 32;
-
-      # Cursor Configuration
-      cursor-style = "block";
-      cursor-style-blink = true;
-
-      # Scrollback
-      scrollback-limit = 3023;
-
-      # Terminal features
-      mouse-hide-while-typing = true;
-      copy-on-select = false;
-      confirm-close-surface = false;
-
-      # Disable in-app Ghostty toast notifications
-      app-notifications = false;
-
-      # Key bindings
-      keybind = [
-        "ctrl+shift+n=new_window"
-        "ctrl+t=new_tab"
-        "ctrl+plus=increase_font_size:1"
-        "ctrl+minus=decrease_font_size:1"
-        "ctrl+zero=reset_font_size"
-        "shift+enter=text:\\n"
-      ];
-
-      # Material 3 UI elements
-      unfocused-split-opacity = 0.7;
-      unfocused-split-fill = "#44464f";
-
-      # Tab configuration
-      gtk-titlebar = false;
-
-      # Shell integration
-      shell-integration = "detect";
-      shell-integration-features = "cursor,sudo,title,no-cursor";
-
-      # GTK / System integration
-      gtk-single-instance = true;
-
-      # Theme
-      theme = "Modus Operandi";
-    };
-  };
-}
+ }
